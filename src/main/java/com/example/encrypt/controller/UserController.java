@@ -6,6 +6,8 @@ import com.example.encrypt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -26,5 +28,10 @@ public class UserController {
     @PostMapping("/user/create")
     public User create(@RequestBody User user) {
         return userService.createUser(user);
+    }
+
+    @PostMapping("/user/get-all")
+    public List<User> getAll(@RequestBody UserDTO userDTO) {
+        return userService.findbyNative(userDTO);
     }
 }
