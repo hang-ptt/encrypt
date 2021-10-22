@@ -2,6 +2,7 @@ package com.example.encrypt.controller;
 
 import com.example.encrypt.domain.User;
 import com.example.encrypt.dto.UserDTO;
+import com.example.encrypt.dto.UserRequestDTO;
 import com.example.encrypt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping("/user/get-all")
-    public List<User> getAll(@RequestBody UserDTO userDTO) {
+    public List<UserRequestDTO> getAll(@RequestBody UserDTO userDTO) {
         return userService.findbyNative(userDTO);
     }
 }

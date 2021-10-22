@@ -2,6 +2,7 @@ package com.example.encrypt.service;
 
 import com.example.encrypt.domain.User;
 import com.example.encrypt.dto.UserDTO;
+import com.example.encrypt.dto.UserRequestDTO;
 import com.example.encrypt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class UserService {
         return userRepository.save(createUser);
     }
 
-    public List<User> findbyNative (UserDTO userDTO) {
+    public List<UserRequestDTO> findbyNative (UserDTO userDTO) {
         return userRepository.findByNative(userDTO.getPhoneNumber(), userDTO.getRegion());
     }
 }

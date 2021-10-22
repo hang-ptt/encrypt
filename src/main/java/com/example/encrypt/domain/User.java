@@ -12,12 +12,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name = "region")
-    @ColumnTransformer(read = "pgp_sym_decrypt(region::bytea, 'mySecretKey')", write = "pgp_sym_encrypt(?, 'mySecretKey')")
+    @Column(name = "region", columnDefinition = "bytea")
+    @ColumnTransformer(read = "pgp_sym_decrypt(region, 'mySecretKey')", write = "pgp_sym_encrypt(?, 'mySecretKey')")
     private String region;
 
-    @Column(name = "phone_number")
-    @ColumnTransformer(read = "pgp_sym_decrypt(phone_number::bytea, 'mySecretKey')", write = "pgp_sym_encrypt(?, 'mySecretKey')")
+    @Column(name = "phone_number", columnDefinition = "bytea")
+    @ColumnTransformer(read = "pgp_sym_decrypt(phone_number, 'mySecretKey')", write = "pgp_sym_encrypt(?, 'mySecretKey')")
     private String phoneNumber;
 
     public Long getId() {
